@@ -1,10 +1,9 @@
-const express = require("express")
-const app = express()
+const express = require('express')
+const router = express.Router();
 
-function authentication(){
-    app.get('/registration', (req,res)=>{
-        res.send('ok')
-    })
-}
+router.post('/registration', (req,res)=>{
+    res.send('okay cool')
+})
 
-module.exports = authentication;
+
+module.exports = router;
