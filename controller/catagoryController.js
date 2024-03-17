@@ -15,8 +15,25 @@ async function createCatagoryController(req, res) {
     category.save();
 }
 
-function catagoryStatusController(req, res){
-    console.log('ami status');
+async function catagoryStatusController(req, res){
+    const {name, status} = req.body;
+   
+    if(status == 'rejected' || status == 'waiting'){
+        const updatecategory = await CatagoryList.findOneAndUpdate(
+            {name},
+            {$set:{isActive: false, status: status}},
+            {new: true}
+             
+        )
+    }else if(status == 'approved'){
+        const updatecategory = await CatagoryList.findOneAndUpdate(
+            {name},
+            {$set:{isActive: true, status: status}},
+            {new: true}
+             
+        )
+    }
+    res.json({success: "Status updated"})
 }
 
 module.exports = {createCatagoryController, catagoryStatusController};
