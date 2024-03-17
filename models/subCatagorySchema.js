@@ -17,6 +17,10 @@ const subCatagorySchema = new Schema({
         default: 'waiting',
         enum: ['waiting', 'rejected', 'approved'] 
     },
+    catagory : {
+        type : Schema.Types.ObjectId,
+        ref : 'CatagoryList'
+    },
     created: {
         type: Date,
         default : new Date()
