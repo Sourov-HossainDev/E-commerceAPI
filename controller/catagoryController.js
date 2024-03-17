@@ -15,4 +15,8 @@ async function createCatagoryController(req, res) {
     category.save();
 }
 
-module.exports = createCatagoryController;   
+function catagoryStatusController(req, res){
+    console.log('ami status');
+}
+
+module.exports = {createCatagoryController, catagoryStatusController};
