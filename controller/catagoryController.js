@@ -36,4 +36,22 @@ async function catagoryStatusController(req, res){
     res.json({success: "Status updated"})
 }
 
-module.exports = {createCatagoryController, catagoryStatusController};
+// sub catagory
+
+async function createSubCatagoryController(req, res) {
+    const { name, description } = req.body;
+    // res.send(name);
+    const duplicateCatagory = await CatagoryList.find({name});
+    if(duplicateCatagory.length > 0){
+        res.json({error: 'This catagory already exist, try again'})
+    }
+    const category = new CatagoryList({
+        name,
+        description
+    })
+    res.json({success: 'catagorye create successfully'})
+    category.save();
+}
+
+module.exports = {createCatagoryController, catagoryStatusController, createSubCatagoryController};
+
