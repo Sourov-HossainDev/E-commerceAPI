@@ -83,9 +83,17 @@ async function subCatagoryStatusController(req, res){
     }
     res.json({success: "Status updated"})
 }
+// Get all catagory
+async function getAllCatagory(req,res){
+    const data = await CatagoryList.find({}).populate("subCatagory")
+    res.json(data)
+}
+async function getAllSubCatagory(req,res){
+    const data = await subCatagoryList.find({})
+    res.json(data)
+}
 
-
-module.exports = {createCatagoryController, catagoryStatusController, createSubCatagoryController, subCatagoryStatusController};
+module.exports = {createCatagoryController, catagoryStatusController, createSubCatagoryController, subCatagoryStatusController, getAllCatagory, getAllSubCatagory};
 
 // The name has been changed. First there was category then next category.
 // If there is a problem then it will be for it
