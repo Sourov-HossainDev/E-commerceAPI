@@ -21,7 +21,7 @@ async function catagoryStatusController(req, res){
     const {name, status} = req.body;
    
     if(status == 'rejected' || status == 'waiting'){
-        const updatecatagory = await CatagoryList.findOneAndUpdate(
+        await CatagoryList.findOneAndUpdate(
             {name},
             {$set:{isActive: false, status: status}},
             {new: true}
