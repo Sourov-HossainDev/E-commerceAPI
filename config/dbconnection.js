@@ -9,7 +9,7 @@ const dotenv = require('dotenv')
 
 function dbConnection(){
     mongoose.connect(process.env.MONGODBURI)
-  .then(() => console.log('DataBase Connected!'));
+  .then(() => console.log('DataBase Connected Now!'));
 }
 
 module.exports = dbConnection;
